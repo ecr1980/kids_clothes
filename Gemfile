@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.3"
 
+# Using the devise gem to handle user authentication:
+gem 'devise'
+
+# Using the figaro gem for ENV variable management.
+gem 'figaro'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
 
