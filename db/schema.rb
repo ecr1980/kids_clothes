@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_16_152108) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_16_170817) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,16 +45,93 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_152108) do
   create_table "children", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "short_sleeve_shirt_need"
+    t.integer "long_sleeve_shirt_need"
+    t.integer "shorts_need"
+    t.integer "jean_pants_need"
+    t.integer "non_jean_pants_need"
+    t.integer "short_skirt_need"
+    t.integer "long_skirt_need"
+    t.integer "short_dress_need"
+    t.integer "long_dress_need"
+    t.integer "warm_pj_shirt_need"
+    t.integer "warm_pj_pants_need"
+    t.integer "warm_pj_onesie_need"
+    t.integer "cool_pj_shirt_need"
+    t.integer "cool_pj_pants_need"
+    t.integer "cool_pj_onesie_need"
+    t.integer "nightgown_need"
+    t.integer "underwear_need"
+    t.integer "socks_need"
+    t.integer "winter_coat_need"
+    t.integer "snow_suit_need"
+    t.integer "fall_coat_need"
+    t.integer "rain_coat_need"
+    t.integer "winter_hat_need"
+    t.integer "non_winter_hat_need"
+    t.integer "gloves_need"
+    t.integer "mittens_need"
+    t.integer "dress_shoes_need"
+    t.integer "tennis_shoes_need"
+    t.integer "boot_need"
+    t.integer "snow_boot_need"
+    t.integer "rain_boot_need"
+    t.integer "suit_jacket_need"
+    t.string "short_sleeve_shirt_size"
+    t.string "long_sleeve_shirt_size"
+    t.string "shorts_size"
+    t.string "jean_pants_size"
+    t.string "non_jean_pants_size"
+    t.string "short_skirt_size"
+    t.string "long_skirt_size"
+    t.string "short_dress_size"
+    t.string "long_dress_size"
+    t.string "warm_pj_shirt_size"
+    t.string "warm_pj_pants_size"
+    t.string "warm_pj_onesie_size"
+    t.string "cool_pj_shirt_size"
+    t.string "cool_pj_pants_size"
+    t.string "cool_pj_onesie_size"
+    t.string "nightgown_size"
+    t.string "underwear_size"
+    t.string "socks_size"
+    t.string "winter_coat_size"
+    t.string "snow_suit_size"
+    t.string "fall_coat_size"
+    t.string "rain_coat_size"
+    t.string "winter_hat_size"
+    t.string "non_winter_hat_size"
+    t.string "gloves_size"
+    t.string "mittens_size"
+    t.string "dress_shoes_size"
+    t.string "tennis_shoes_size"
+    t.string "boot_size"
+    t.string "snow_boot_size"
+    t.string "rain_boot_size"
+    t.string "suit_jacket_size"
   end
 
   create_table "garments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
+    t.string "subtype"
+    t.string "size"
+    t.string "color"
+    t.string "season"
+    t.boolean "on_market"
+    t.float "price"
   end
 
   create_table "markets", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "body"
   end
 
   create_table "users", force: :cascade do |t|
