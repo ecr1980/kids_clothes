@@ -9,6 +9,9 @@ gem 'devise'
 # Using the figaro gem for ENV variable management.
 gem 'figaro'
 
+# Using letter_opener for email testing.
+gem "letter_opener", group: :development
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
 

@@ -1,1 +1,16 @@
 Kids' Clothes Home Page.
+<% if user_signed_in? %>
+
+  <div class="children-container">
+    Your kids go here.  
+  </div>
+  <div class="add-child-form-container">
+    <%= render "children/new", user: current_user.id %>
+  </div>
+
+
+<% end %>
+
+<div class="market-link-container">
+  And here, a <%= link_to "link to the market", markets_path %>.
+<div>
