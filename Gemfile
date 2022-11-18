@@ -12,6 +12,9 @@ gem 'figaro'
 # Using letter_opener for email testing.
 gem "letter_opener", group: :development
 
+# Using Pry instead of IRB for console.
+gem 'pry-rails', :group => :development
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
 

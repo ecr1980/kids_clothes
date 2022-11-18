@@ -1,5 +1,6 @@
 class Child < ApplicationRecord
   has_one_attached :avatar
   has_many :garments
-  has_and_belongs_to_many :users
+  has_many :user_children
+  has_many :users, through: :user_children
 end

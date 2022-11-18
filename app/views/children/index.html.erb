@@ -2,7 +2,14 @@ Kids' Clothes Home Page.
 <% if user_signed_in? %>
 
   <div class="children-container">
-    Your kids go here.  
+    <% if @children.length > 0 %>
+      Your children: <br>
+      <% @children.each do |child| %>
+        <%= child.nickname %><br>
+      <% end %>
+    <% else %>
+      You haven't added any children yet.
+    <% end %>
   </div>
   <div class="add-child-form-container">
     <%= render "children/new", user: current_user.id %>
