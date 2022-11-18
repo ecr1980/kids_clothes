@@ -1,0 +1,26 @@
+<%= @child.nickname %>'s page.
+<br>
+<br>
+<div class="owned-clothes">
+  A list of your child's clothes:
+  <% @child.garments.each do |garment| %>
+    <%= garment.clothing_catagory %><br>
+    <%= garment.clothing_catagory_item %><br>
+    <%= garment.color %><br>
+    <%= garment.season %><br>
+    <%= garment.size %><br>
+  <% end %>
+  <br>
+</div>
+<div class="needed-clothes">
+  A list of clothes your child needs:
+  <br>
+</div>
+<div class="small-clothes">
+  Clothes your child has outgrown:
+  <br>
+</div>
+<div class="big-clothes">
+  Clothes your child can grow into:
+  <br>
+</div>

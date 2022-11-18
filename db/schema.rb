@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_17_171600) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_18_190605) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -115,13 +115,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_17_171600) do
   create_table "garments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type"
-    t.string "subtype"
+    t.string "clothing_catagory"
+    t.string "clothing_catagory_item"
     t.string "color"
     t.string "season"
     t.boolean "on_market"
     t.float "price"
     t.integer "size"
+    t.integer "child_id"
+    t.integer "market_id"
   end
 
   create_table "markets", force: :cascade do |t|

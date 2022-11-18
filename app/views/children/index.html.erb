@@ -5,7 +5,7 @@ Kids' Clothes Home Page.
     <% if @children.length > 0 %>
       Your children: <br>
       <% @children.each do |child| %>
-        <%= child.nickname %><br>
+        <%= link_to child.nickname, child_path(child.id) %>
       <% end %>
     <% else %>
       You haven't added any children yet.
