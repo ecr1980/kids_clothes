@@ -38,7 +38,12 @@ class ChildrenController < ApplicationController
     end
   end
 
-
+  def update
+    @child = Child.find(params[:id])
+    if @child.update(child_params)
+      redirect_to child_path(@child.id)
+    end
+  end
 
 
   private
