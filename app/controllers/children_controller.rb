@@ -40,6 +40,11 @@ class ChildrenController < ApplicationController
 
   def update
     @child = Child.find(params[:id])
+    # Sort sizes adds the sizes to each individual type of clothing article, so the user doesn't have to assign sizes to different types
+    # that would naturally share a size, but users can still search for specific types by size.    
+    sort_sizes(params[:child][:base_size].to_i, params[:child][:shirt_size].to_i, params[:child][:pants_size].to_i, params[:child][:hats_and_gloves_size].to_i, params[:child][:shoe_size].to_i)
+    # Assign needs adds a needs value to each type of clothing, removed from the update method for readability.
+    assign_needs()
     if @child.update(child_params)
       redirect_to child_path(@child.id)
     end
@@ -122,102 +127,141 @@ class ChildrenController < ApplicationController
     @child.snow_boot_size = size
   end
 
+  def assign_needs
+    @child.short_sleeve_shirt_need = params[:child][:short_sleeve_shirt_need].to_i
+    @child.long_sleeve_shirt_need = params[:child][:long_sleeve_shirt_need].to_i
+    @child.short_dress_need = params[:child][:short_dress_need].to_i
+    @child.long_dress_need = params[:child][:long_dress_need].to_i
+    @child.warm_pj_shirt_need = params[:child][:warm_pj_shirt_need].to_i
+    @child.warm_pj_onesie_need = params[:child][:warm_pj_onesie_need].to_i
+    @child.cool_pj_shirt_need = params[:child][:cool_pj_shirt_need].to_i
+    @child.cool_pj_onesie_need = params[:child][:cool_pj_onesie_need].to_i
+    @child.nightgown_need = params[:child][:nightgown_need].to_i
+    @child.winter_coat_need = params[:child][:winter_coat_need].to_i
+    @child.fall_coat_need = params[:child][:fall_coat_need].to_i
+    @child.rain_coat_need = params[:child][:rain_coat_need].to_i
+    @child.suit_jacket_need = params[:child][:suit_jacket_need].to_i
+    @child.snow_suit_need = params[:child][:snow_suit_need].to_i
+    
+    @child.shorts_need = params[:child][:shorts_need].to_i
+    @child.jean_pants_need = params[:child][:jean_pants_need].to_i
+    @child.non_jean_pants_need = params[:child][:non_jean_pants_need].to_i
+    @child.short_skirt_need = params[:child][:short_skirt_need].to_i
+    @child.long_skirt_need = params[:child][:long_skirt_need].to_i
+    @child.warm_pj_pants_need = params[:child][:warm_pj_pants_need].to_i
+    @child.cool_pj_pants_need = params[:child][:cool_pj_pants_need].to_i
+    @child.underwear_need = params[:child][:underwear_need].to_i
+    @child.socks_need = params[:child][:socks_need].to_i
+
+    @child.winter_hat_need = params[:child][:winter_hat_need].to_i
+    @child.non_winter_hat_need = params[:child][:non_winter_hat_need].to_i
+    @child.gloves_need = params[:child][:gloves_need].to_i
+    @child.mittens_need = params[:child][:mittens_need].to_i
+
+    @child.dress_shoes_need = params[:child][:dress_shoes_need].to_i
+    @child.tennis_shoes_need = params[:child][:tennis_shoes_need].to_i
+    @child.boot_need = params[:child][:boot_need].to_i
+    @child.rain_boot_need = params[:child][:rain_boot_need].to_i
+    @child.snow_boot_need = params[:child][:snow_boot_need].to_i
+  end
+
   def need_determination()
+    puts("****NEED DETERMINATION ACTIVATED****")
     need_list = []
-    if @child.short_sleeve_shirt_need && @child.short_sleeve_shirt_need > 0
+    if (@child.short_sleeve_shirt_need != nil) && (@child.short_sleeve_shirt_need > 0)
       need_list << ["Short Sleeve Shirts:", @child.short_sleeve_shirt_need]
     end
-    if @child.long_sleeve_shirt_need && @child.long_sleeve_shirt_need > 0
+    if (@child.long_sleeve_shirt_need != nil) && (@child.long_sleeve_shirt_need > 0)
       need_list << ["Long Sleeve Shirts:", @child.long_sleeve_shirt_need]
     end
-    if @child.shorts_need && @child.shorts_need > 0
+    if (@child.shorts_need != nil) && (@child.shorts_need > 0)
       need_list << ["Shorts:", @child.shorts_need]
     end
-    if @child.jean_pants_need && @child.jean_pants_need > 0
+    if (@child.jean_pants_need != nil) && (@child.jean_pants_need > 0)
       need_list << ["Jean Pants:", @child.jean_pants_need]
     end
-    if @child.non_jean_pants_need && @child.non_jean_pants_need > 0
+    if (@child.non_jean_pants_need != nil) && (@child.non_jean_pants_need > 0)
       need_list << ["Non-jean Pants:", @child.non_jean_pants_need]
     end
-    if @child.short_skirt_need && @child.short_skirt_need > 0
+    if (@child.short_skirt_need != nil) && (@child.short_skirt_need > 0)
       need_list << ["Short Skirts:", @child.short_skirt_need]
     end
-    if @child.long_skirt_need && @child.long_skirt_need > 0
+    if (@child.long_skirt_need != nil) && (@child.long_skirt_need > 0)
       need_list << ["Long Skirts:", @child.long_skirt_need]
     end
-    if @child.short_dress_need && @child.short_dress_need > 0
+    if (@child.short_dress_need != nil) && (@child.short_dress_need > 0)
       need_list << ["Short Dresses:", @child.short_dress_need]
     end
-    if @child.long_dress_need && @child.long_dress_need > 0
+    if (@child.long_dress_need != nil) && (@child.long_dress_need > 0)
       need_list << ["Long Dresses:", @child.long_dress_need]
     end
-    if @child.warm_pj_shirt_need && @child.warm_pj_shirt_need > 0
+    if (@child.warm_pj_shirt_need != nil) && (@child.warm_pj_shirt_need > 0)
       need_list << ["Warm PJ Shirts:", @child.warm_pj_shirt_need]
     end
-    if @child.warm_pj_pants_need && @child.warm_pj_pants_need > 0
+    if (@child.warm_pj_pants_need != nil) && (@child.warm_pj_pants_need > 0)
       need_list << ["Warm PJ Pants:", @child.warm_pj_pants_need]
     end
-    if @child.warm_pj_onesie_need && @child.warm_pj_onesie_need > 0
+    if (@child.warm_pj_onesie_need != nil) && (@child.warm_pj_onesie_need > 0)
       need_list << ["Warm PJ Onesies:", @child.warm_pj_onesie_need]
     end
-    if @child.cool_pj_shirt_need && @child.cool_pj_shirt_need > 0
+    if (@child.cool_pj_shirt_need != nil) && (@child.cool_pj_shirt_need > 0)
       need_list << ["Cool PJ Shirts:", @child.cool_pj_shirt_need]
     end
-    if @child.cool_pj_pants_need && @child.cool_pj_pants_need > 0
+    if (@child.cool_pj_pants_need != nil) && (@child.cool_pj_pants_need > 0)
       need_list << ["Cool PJ Pants:", @child.cool_pj_pants_need]
     end
-    if @child.cool_pj_onesie_need && @child.cool_pj_onesie_need > 0
+    if (@child.cool_pj_onesie_need != nil) && (@child.cool_pj_onesie_need > 0)
       need_list << ["Cool PJ Onesies:", @child.cool_pj_onesie_need]
     end
-    if @child.nightgown_need && @child.nightgown_need > 0
+    if (@child.nightgown_need != nil) && (@child.nightgown_need > 0)
       need_list << ["Nightgowns:", @child.nightgown_need]
     end
-    if @child.underwear_need && @child.underwear_need > 0
+    if (@child.underwear_need != nil) && (@child.underwear_need > 0)
       need_list << ["Underwear:", @child.underwear_need]
     end
-    if @child.socks_need && @child.socks_need > 0
+    if (@child.socks_need != nil) && (@child.socks_need > 0)
       need_list << ["Socks:", @child.socks_need]
     end
-    if @child.winter_coat_need && @child.winter_coat_need > 0
+    if (@child.winter_coat_need != nil) && (@child.winter_coat_need > 0)
       need_list << ["Winter Coats:", @child.winter_coat_need]
     end
-    if @child.snow_suit_need && @child.snow_suit_need > 0
+    if (@child.snow_suit_need != nil) && (@child.snow_suit_need > 0)
       need_list << ["Snow Suits:", @child.snow_suit_need]
     end
-    if @child.fall_coat_need && @child.fall_coat_need > 0
+    if (@child.fall_coat_need != nil) && (@child.fall_coat_need > 0)
       need_list << ["Fall Coats:", @child.fall_coat_need]
     end
-    if @child.rain_coat_need && @child.rain_coat_need > 0
+    if (@child.rain_coat_need != nil) && (@child.rain_coat_need > 0)
       need_list << ["Rain Coats:", @child.rain_coat_need]
     end
-    if @child.suit_jacket_need && @child.suit_jacket_need > 0
+    if (@child.suit_jacket_need != nil) && (@child.suit_jacket_need > 0)
       need_list << ["Suit Jackets:", @child.suit_jacket_need]
     end
-    if @child.winter_hat_need && @child.winter_hat_need > 0
+    if (@child.winter_hat_need != nil) && (@child.winter_hat_need > 0)
       need_list << ["Winter Hats:", @child.winter_hat_need]
     end
-    if @child.non_winter_hat_need && @child.non_winter_hat_need > 0
+    if (@child.non_winter_hat_need != nil) && (@child.non_winter_hat_need > 0)
       need_list << ["Regular Hats:", @child.non_winter_hat_need]
     end
-    if @child.gloves_need && @child.gloves_need > 0
+    if (@child.gloves_need != nil) && (@child.gloves_need > 0)
       need_list << ["Gloves:", @child.gloves_need]
     end
-    if @child.mittens_need && @child.mittens_need > 0
+    if (@child.mittens_need != nil) && (@child.mittens_need > 0)
       need_list << ["Mittens:", @child.mittens_need]
     end
-    if @child.dress_shoes_need && @child.dress_shoes_need > 0
+    if (@child.dress_shoes_need != nil) && (@child.dress_shoes_need > 0)
       need_list << ["Dress Shoes:", @child.dress_shoes_need]
     end
-    if @child.tennis_shoes_need && @child.tennis_shoes_need > 0
+    if (@child.tennis_shoes_need != nil) && (@child.tennis_shoes_need > 0)
       need_list << ["Tennis Shoes:", @child.tennis_shoes_need]
     end
-    if @child.boot_need && @child.boot_need > 0
+    if (@child.boot_need != nil) && (@child.boot_need > 0)
       need_list << ["Boots:", @child.boot_need]
     end
-    if @child.snow_boot_need && @child.snow_boot_need > 0
+    if (@child.snow_boot_need != nil) && (@child.snow_boot_need > 0)
       need_list << ["Snow Boots:", @child.snow_boot_need]
     end
-    if @child.rain_boot_need && @child.rain_boot_need > 0
+    if (@child.rain_boot_need != nil) && (@child.rain_boot_need > 0)
       need_list << ["Rain Boots:", @child.rain_boot_need]
     end
     return need_list

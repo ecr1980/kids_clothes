@@ -2,7 +2,8 @@
 <br>
 <br>
 <div class="owned-clothes">
-  A list of your child's clothes:
+  <h3>A list of your child's clothes:</h3>
+  <br>
   <% @child.garments.each do |garment| %>
     <%= garment.clothing_catagory %><br>
     <%= garment.clothing_catagory_item %><br>
@@ -13,15 +14,19 @@
   <br>
 </div>
 <div class="needed-clothes">
-  A list of clothes your child needs:
+  <h3>A list of clothes your child needs:</h3>
+  <% @needs.each do |need| %>
+    <%= need[0] %> <%= need[1]%>
+    <br>
+  <% end %> 
   <br>
 </div>
 <div class="small-clothes">
-  Clothes your child has outgrown:
+  <h3>Clothes your child has outgrown:</h3>
   <br>
 </div>
 <div class="big-clothes">
-  Clothes your child can grow into:
+  <h3>Clothes your child can grow into:</h3>
   <br>
 </div>
 
