@@ -4,7 +4,14 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
     delete 'sign_out' => "profiles#update"
   end
-  resources :users, :children, :garments, :markets, :messages
+  resources :users, :children, :markets, :messages, :garments
+  resources :garments do
+    collection do
+      get :types
+    end
+  end
+
+  resources :users, :children, :markets, :messages, :garments
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

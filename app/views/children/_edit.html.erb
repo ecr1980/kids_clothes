@@ -2,10 +2,12 @@
    How much of each item do you want for your child in total, including what they already have?
    Any marked zero will not show up in the rest of the site, so if you never need snow boots, you never have to look at them.
    You can always come back and change this later.
+   <br>
 <%= form_with model: @child do |f| %>
   <%= f.label :nickname, "Nickname:" %><br>
   <%= f.text_area :nickname, row: 1 %><br>
   <div class="general-size-form">
+    <h2>Edit Sizes:</h2>
     <%= f.label :base_size, "General Size." %>
     <%= f.select :base_size, $clothing_sizes %>
   </div>
@@ -13,24 +15,96 @@
     <%= f.label :shirt_size, "Shirt Size:" %>
     <%= f.select :shirt_size, $clothing_sizes %>
   </div>
-  <div class="shirt-need-form">
+  <div class="pants-sizes-form">
+    <%= f.label :pant_size, "Pant Size:" %>
+    <%= f.select :pant_size, $clothing_sizes %>
+  </div>
+  <div class="hats-and-gloves-sizes-form">
+    <%= f.label :hats_and_gloves_size, "Hats and Gloves Size:" %>
+    <%= f.select :hats_and_gloves_size, $clothing_sizes %>
+  </div>
+  <div class="shoe-size-form">
+    <%= f.label :shoe_size, "Shoe Size:" %>
+    <%= f.select :shoe_size, $shoe_sizes%>
+  </div>
+  <br>
+  <h2>Edit needs:</h2>
+  <div class="tops-need-form">
+
+    <h3>Tops</h3>
     <%= f.label :short_sleeve_shirt_need, "Short sleeve shirts" %>
     <%= f.number_field :short_sleeve_shirt_need, min: 0, :value => 0%>
     <br>
     <%= f.label :long_sleeve_shirt_need, "Long sleeve shirts" %>
     <%= f.number_field :long_sleeve_shirt_need, min: 0, :value => 0%>
     <br>
-    <%= f.label :short_sleeve_dress_need, "Short sleeve dresses" %>
+    <%= f.label :sweater_need, "Sweaters" %>
+    <%= f.number_field :sweaters_need, min: 0, :value => 0%>
+    <br>
+    <%= f.label :sweatshirt_need, "Sweatshirts" %>
+    <%= f.number_field :sweatshirts_need, min: 0, :value => 0%>
+    <br>
+    <%= f.label :hoodie_need, "Hoodies" %>
+    <%= f.number_field :hoodie_need, min: 0, :value => 0%>
+    <br>
+
+    <h3>Bottoms</h3>
+    <%= f.label :shorts_need, "Shorts" %>
+    <%= f.number_field :shorts_need, min: 0, :value => 0%>
+    <br>
+    <%= f.label :jean_pants_need, "Jeans" %>
+    <%= f.number_field :jean_pants, min: 0, :value => 0%>
+    <br>
+    <%= f.label :dress_pants_nead, "Dress pants" %>
+    <%= f.number_field :dress_pants_need, min: 0, :value => 0%>
+    <br>
+    <%= f.label :sweatpants_nead, "Sweatpants" %>
+    <%= f.number_field :sweatpants_need, min: 0, :value => 0%>
+    <br>
+    <%= f.label :leggings_nead, "Leggings" %>
+    <%= f.number_field :leggings_need, min: 0, :value => 0%>
+    <br>
+
+    <h3>Dresses and Skirts</h3>
+    <%= f.label :short_dress_need, "Short sleeve dresses" %>
     <%= f.number_field :short_dress_need, min: 0, :value => 0%>
     <br>
-    <%= f.label :long_sleeve_dress_need, "Long sleeve dresses" %>
+    <%= f.label :long_dress_need, "Long sleeve dresses" %>
     <%= f.number_field :long_dress_need, min: 0, :value => 0%>
     <br>
+    <%= f.label :short_skirt_need, "Short skirts" %>
+    <%= f.number_field :short_skirt_need, min: 0, :value => 0%>
+    <br>
+    <%= f.label :long_skirt_need, "Long skirts" %>
+    <%= f.number_field :long_skirt_need, min: 0, :value => 0%>
+    <br>
+
+    <h3>Socks and Underwear</h3>
+    <%= f.label :boys_underwear_need, "Boy's Underwear" %>
+    <%= f.number_field :girls_underwear_need, min: 0, :value => 0%>
+    <br>
+    <%= f.label :girls_underwear_need, "Gril's Underwear" %>
+    <%= f.number_field :girls_underwear_need, min: 0, :value => 0%>
+    <br>
+    <%= f.label :low_cut_socks_need, "Low cut Socks" %>
+    <%= f.number_field :low_cut_socks_need, min: 0, :value => 0%>
+    <br>
+    <%= f.label :high_cut_socks_need, "High cut Socks" %>
+    <%= f.number_field :high_cut_socks_need, min: 0, :value => 0%>
+    <br>
+
+    <h3>PJs</h3>
     <%= f.label :warm_pj_shirt_need, "Warm PJ shirts" %>
     <%= f.number_field :warm_pj_shirt_need, min: 0, :value => 0%>
     <br>
+    <%= f.label :warm_pj_pants_need, "Warm PJ pants" %>
+    <%= f.number_field :warm_pj_pants_need, min: 0, :value => 0%>
+    <br>
     <%= f.label :cool_pj_shirt_need, "Cool PJ shirts" %>
     <%= f.number_field :cool_pj_shirt_need, min: 0, :value => 0%>
+    <br>
+    <%= f.label :cool_pj_pants_need, "Cool PJ pants" %>
+    <%= f.number_field :cool_pj_pants_need, min: 0, :value => 0%>
     <br>
     <%= f.label :warm_pj_onesie_need, "Warm PJ onesies" %>
     <%= f.number_field :warm_pj_onesie_need, min: 0, :value => 0%>
@@ -41,6 +115,8 @@
     <%= f.label :nightgown_need, "Nightgowns" %>
     <%= f.number_field :nightgown_shirt_need, min: 0, :value => 0%>
     <br>
+
+    <h3>Outerwear</h3>
     <%= f.label :winter_coat_need, "Winter coats" %>
     <%= f.number_field :winter_coat_need, min: 0, :value => 0%>
     <br>
@@ -56,45 +132,6 @@
     <%= f.label :snow_suit_need, "Snow suits" %>
     <%= f.number_field :snow_suit_need, min: 0, :value => 0%>
     <br>
-  </div>
-  <br>
-  <div class="pants-need-form">
-    <%= f.label :pant_size, "Pant Size:" %>
-    <%= f.select :pant_size, $clothing_sizes %>
-    <br>
-    <%= f.label :shorts_need, "Shorts" %>
-    <%= f.number_field :shorts_need, min: 0, :value => 0%>
-    <br>
-    <%= f.label :jean_pants_need, "Jeans" %>
-    <%= f.number_field :jean_pants, min: 0, :value => 0%>
-    <br>
-    <%= f.label :non_jean_pants_nead, "Non-jean pants" %>
-    <%= f.number_field :non_jean_need, min: 0, :value => 0%>
-    <br>
-    <%= f.label :short_skirt_need, "Short skirts" %>
-    <%= f.number_field :short_skirt_need, min: 0, :value => 0%>
-    <br>
-    <%= f.label :long_skirt_need, "Long skirts" %>
-    <%= f.number_field :long_skirt_need, min: 0, :value => 0%>
-    <br>
-    <%= f.label :warm_pj_pants_need, "Warm PJ pants" %>
-    <%= f.number_field :warm_pj_pants_need, min: 0, :value => 0%>
-    <br>
-    <%= f.label :cool_pj_pants_need, "Cool PJ pants" %>
-    <%= f.number_field :cool_pj_pants_need, min: 0, :value => 0%>
-    <br>
-    <%= f.label :underwear_need, "Underwear" %>
-    <%= f.number_field :underwear_need, min: 0, :value => 0%>
-    <br>
-    <%= f.label :socks_need, "Socks" %>
-    <%= f.number_field :socks_need, min: 0, :value => 0%>
-    <br>
-  </div>
-  <br>
-  <div class="hats-and-gloves-need-form">
-    <%= f.label :hats_and_gloves_size, "Hats and Gloves Size:" %>
-    <%= f.select :hats_and_gloves_size, $clothing_sizes %>
-    <br>
     <%= f.label :winter_hat_need, "Winter hats" %>
     <%= f.number_field :winter_hat_need, min: 0, :value => 0%>
     <br>
@@ -107,12 +144,8 @@
     <%= f.label :mittens_need, "Mittens" %>
     <%= f.number_field :mittens_need, min: 0, :value => 0%>
     <br>
-  </div>
-  <br>
-  <div class="shoes-need-form">
-    <%= f.label :shoe_size, "Shoe Size:" %>
-    <%= f.select :shoe_size, $shoe_sizes%>
-    <br>
+
+    <h3>Shoes and Boots</h3>
     <%= f.label :dress_shoes_need, "Dress shoes" %>
     <%= f.number_field :dress_shoes_need, min: 0, :value => 0%>
     <br>
@@ -123,11 +156,18 @@
     <%= f.number_field :boots_need, min: 0, :value => 0%>
     <br>
     <%= f.label :rain_boots_need, "Rain boots" %>
-    <%= f.number_field :rain_boots_need, min: 0, :value => 0%>
+    <%= f.number_field :rains_boot_need, min: 0, :value => 0%>
     <br>
     <%= f.label :snow_boots_need, "Snow boots" %>
     <%= f.number_field :snow_boots_need, min: 0, :value => 0%>
     <br>
+    <%= f.label :sandals_need, "Sandals" %>
+    <%= f.number_field :sandals_need, min: 0, :value => 0%>
+    <br>
+    <%= f.label :flip_flops_need, "Flip Flops" %>
+    <%= f.number_field :flips_flops_need, min: 0, :value => 0%>
+    <br>
+
   </div>
   <%= f.submit %>
 <% end %>

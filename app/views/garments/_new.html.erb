@@ -1,0 +1,27 @@
+<h1>NEW CLOTHES FORM</h1>
+<%= form_with model: @garment do |f| %>
+  <div data-controller="catagory">
+    <%= f.label :clothing_catagory, "Catagory:" %><br>
+    <%= f.select :clothing_catagory, $clothing_catagory, {prompt: "Select a catagory"}, { class: 'form-select', data: { action: "change->catagory#change"} }%><br>
+
+    <%= f.label :clothing_catagory_item, "Type:" %>
+    <%= f.select :clothing_catagory_item, [], {}, {data: {catagory_target: "catagorySelect"}} %>
+
+    <%= f.label :size, "Size:" %>
+    <%= f.select :size, [], {}, {data: {catagory_target: "sizeSelect"}} %>
+  </div>
+
+  <div class="color-form">
+    <%= f.label :color, "Color:" %>
+    <%= f.select :color, $colors %>
+  </div>
+
+  <div class="season-form">
+    <%= f.label :season, "Season:"%>
+    <%= f.select :season, $seasons %>
+  </div>
+
+  <%= f.hidden_field :child_id, :value => @child.id %>
+  <%= f.hidden_field :market_id, :value => 1 %>
+  <%= f.submit %>
+<% end %>

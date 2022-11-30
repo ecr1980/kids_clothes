@@ -1,0 +1,6 @@
+<%= turbo_stream.update @type_target do %>
+  <%= options_for_select @options %>
+<% end %>
+<%= turbo_stream.update @size_target do %>
+  <%= options_for_select @size %>
+<% end %>

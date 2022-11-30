@@ -73,4 +73,27 @@ class ApplicationController < ActionController::Base
   ["6    Big Kid", 39],
   ["6.5  Big Kid", 40],
   ["7    Big Kid",41]]
+  
+  # List of catagories and the types within:
+
+  $clothing_catagory = ["Tops",
+  "Bottoms",
+  "Dresses and Skirts",
+  "Socks and Underwear",
+  "PJs",
+  "Outerwear",
+  "Boots and Shoes"]
+
+  $tops = ["Short sleeve shirt", "Long sleeve shirt", "Sweaters", "Sweatshirts", "Hoodies"]
+  $bottoms = ["Shorts", "Jeans", "Dress Pants", "Sweatpants", "Leggings"]
+  $dresses_and_skirts = ["Long dresses", "Short dresses", "Long skirts", "Short skirts"]
+  $socks_and_underwear = ["Low cut socks", "High cut socks", "Boys' Underwear", "Girls Underwear"]
+  $pjs = ["Warm Pj shirts", "Warm PJ pants", "Cool PJ Shirts", "Cool PJ Pants", "Warm Onesies", "Cool Onesies", "Nightgowns"]
+  $outerwear = ["Winter hats", "Non Winter hats", "Gloves", "Mittens", "Winter Coats", "Fall Jackets", "Rain Coats", "Snowsuits", "Suit Jackets"]
+  $shoes = ["Dress shoes", "Tennis Shoes", "Snow boots", "Rain boots", "Regular boots", "Sandals", "Flip flops"]
+
+  # List of colors and seasons, used both for creation and searches.
+
+  $colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "Brown", "Gray", "Black", "White"]
+  $seasons = ["Spring", "Summer", "Fall", "Winter"]
 end
