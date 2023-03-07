@@ -15,8 +15,11 @@ export default class extends Controller {
 
   turnOffAll(){
     this.topsTarget.style.display = "none"
+    console.log('tops')
     this.bottomsTarget.style.display = "none"
+    console.log('bottoms')
     this.dressesTarget.style.display = "none"
+    console.log('dresses')
     this.socksTarget.style.display = "none"
     this.pjsTarget.style.display = "none"
     this.outerwearTarget.style.display = "none"
