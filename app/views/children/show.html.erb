@@ -1,43 +1,166 @@
 <h1><%= @child.nickname %>'s page.</h1>
 <br>
 <br>
-<div class="owned-clothes">
+<div class="owned-clothes" data-controller="garment">
   <h3>A list of your child's clothes:</h3>
   <br>
-  <% @child.garments.each do |garment| %>
-    <%= garment.clothing_catagory %><br>
+  <div class="catagory-bar">
+    <div class="owned-button" id="owned-tops-button" data-action="click->garment#toggleTops">
+    T
+    </div>
+    <div class="owned-button" id="owned-bottoms-button" data-action="click->garment#toggleBottoms">
+    B
+    </div>
+    <div class="owned-button" id="owned-dresses-and-skirts-button" data-action="click->garment#toggleDresses">
+    D and S
+    </div>
+    <div class="owned-button" id="owned-socks-and-underwear-button" data-action="click->garment#toggleSocks">
+    S and U
+    </div>
+    <div class="owned-button" id="owned-pjs-button" data-action="click->garment#togglePJs">
+    PJs
+    </div>
+    <div class="owned-button" id="owned-outerwear-button" data-action="click->garment#toggleOuterwear">
+    H,G,C
+    </div>
+    <div class="owned-button" id="owned-shoes-and-boots-button" data-action="click->garment#toggleShoes">
+    S and B
+    </div>
+  </div>
+  <div class="child-tops" data-garment-target="tops" style="display: none" >
+    <h4>Tops</h4>
+    <br>
+    <% @child.garments.where(clothing_catagory: "Tops").each do |garment|%>
     <%= garment.clothing_catagory_item %><br>
     <%= garment.color %><br>
     <%= garment.season %><br>
     <%= garment.size %><br>
-  <% end %>
-  <br>
-</div>
-<div class="needed-clothes">
-  <h3>A list of clothes your child needs:</h3>
-  <% @needs.each do |need| %>
-    <%= need[0] %> <%= need[1]%>
+    <% end %>
     <br>
-  <% end %> 
-  <br>
+  </div>
+  <div class="child-bottoms" data-garment-target="bottoms" style="display: none">
+    <h4>Bottoms</h4>
+    <br>
+    <% @child.garments.where(clothing_catagory: "Bottoms").each do |garment|%>
+    <%= garment.clothing_catagory_item %><br>
+    <%= garment.color %><br>
+    <%= garment.season %><br>
+    <%= garment.size %><br>
+    <% end %>
+    <br>
+  </div>
+  <div class="child-dresses-and-skirts" data-garment-target="dresses" style="display: none">
+    <h4>Dresses and Skirts</h4>
+    <br>
+    <% @child.garments.where(clothing_catagory: "Dresses and Skirts").each do |garment|%>
+    <%= garment.clothing_catagory_item %><br>
+    <%= garment.color %><br>
+    <%= garment.season %><br>
+    <%= garment.size %><br>
+    <% end %>
+    <br>
+  </div>
+  <div class="child-socks-and-underwear" data-garment-target="socks" style="display: none">
+    <h4>Socks and Underwear</h4>
+    <br>
+    <% @child.garments.where(clothing_catagory: "Socks and Underwear").each do |garment|%>
+    <%= garment.clothing_catagory_item %><br>
+    <%= garment.color %><br>
+    <%= garment.season %><br>
+    <%= garment.size %><br>
+    <% end %>
+    <br>
+  </div>
+  <div class="child-pjs" data-garment-target="pjs" style="display: none">
+    <h4>PJs</h4>
+    <br>
+    <% @child.garments.where(clothing_catagory: "PJs").each do |garment|%>
+    <%= garment.clothing_catagory_item %><br>
+    <%= garment.color %><br>
+    <%= garment.season %><br>
+    <%= garment.size %><br>
+    <% end %>
+    <br>
+  </div>
+  <div class="child-outerwear" data-garment-target="outerwear" style="display: none">
+    <h4>Outerwear</h4>
+    <br>
+    <% @child.garments.where(clothing_catagory: "Outerwear").each do |garment|%>
+    <%= garment.clothing_catagory_item %><br>
+    <%= garment.color %><br>
+    <%= garment.season %><br>
+    <%= garment.size %><br>
+    <% end %>
+    <br>
+  </div>
+  <div class="child-shoes-and-boots" data-garment-target="shoes" style="display: none"> 
+    <h4>Shoes and Boots</h4>
+    <br>
+    <% @child.garments.where(clothing_catagory: "Shoes and Boots").each do |garment|%>
+    <%= garment.clothing_catagory_item %><br>
+    <%= garment.color %><br>
+    <%= garment.season %><br>
+    <%= garment.size %><br>
+    <% end %>
+    <br>
+  </div>
 </div>
-<div class="small-clothes">
-  <h3>Clothes your child has outgrown:</h3>
-  <br>
-</div>
-<div class="big-clothes">
-  <h3>Clothes your child can grow into:</h3>
-  <br>
-</div>
+<br>
+<div data-controller="children">
+  <div class="needed-clothes">
+    <div class="child-list-button" data-action="click->children#toggleNeeds">
+      needs
+    </div>
+    <div data-children-target="needs" style="display:none">
+      <% @needs.each do |need| %>
+        <%= need[0] %> <%= need[1]%>
+        <br>
+      <% end %> 
+    </div>
+    <br>
+  </div>
+  <div class="small-clothes">
+    <div class="child-list-button" data-action="click->children#toggleOutgrown">
+      outgrown
+    </div>
+    <div data-children-target="outgrown" style="display:none">
+      test content
+    </div>
+    <br>
+  </div>
+  <div class="big-clothes">
+    <div class="child-list-button" data-action="click->children#toggleGrowin">
+      grow into
+    </div>
+    <div data-children-target="growin" style="display:none">
+      test content
+    </div>
+    <br>
+  </div>
 
-<div class="edit-child">
-<h2>Edit child</h2>
-  <%= render "children/edit" %>
-<div>
+  <div class="edit-child">
+    <div class="child-list-button" data-action="click->children#toggleChild">
+      Edit child
+    </div>
+    <div data-children-target="child" style="display:none">
+      <%= render "children/edit" %>
+    </div>
+    <br>
+  <div>
 
-<div class="edit-owned-clothes">
-<h2>Edit Clothes</h2>
-<h3>Add clothes</h3>
-  <%= render "garments/new" %>
-
+  <div class="edit-owned-clothes" >
+    <div class="child-list-button" data-action="click->children#toggleEdit">
+      Edit Clothes
+    </div>
+    <div data-children-target="edit" style="display:none">
+      test content
+    </div>
+    <br>
+    <div class="child-list-button" data-action="click->children#toggleNew">
+      Add clothes
+    </div>
+    <div data-children-target="new" style="display:none">
+      <%= render "garments/new" %>
+    </div>
+  </div>
 </div>

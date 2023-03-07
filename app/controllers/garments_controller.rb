@@ -11,6 +11,15 @@ class GarmentsController < ApplicationController
     end
   end
 
+  def childs
+    @child = params[:child_id]
+    @catagory = params[:catagory]
+    @garments = @child.garments.where(clothing_catagory: @catagory)
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   def show
     @type_target = params[:typeTarget]
     @size_target = params[:sizeTarget]

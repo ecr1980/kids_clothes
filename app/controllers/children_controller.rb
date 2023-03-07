@@ -294,13 +294,13 @@ class ChildrenController < ApplicationController
       need_list << ["Tennis Shoes:", @child.tennis_shoes_need]
     end
     if (@child.boots_need != nil) && (@child.boots_need > 0)
-      need_list << ["Boots:", @child.boot_need]
+      need_list << ["Boots:", @child.boots_need]
     end
     if (@child.snow_boots_need != nil) && (@child.snow_boots_need > 0)
-      need_list << ["Snow Boots:", @child.snow_boot_need]
+      need_list << ["Snow Boots:", @child.snow_boots_need]
     end
     if (@child.rain_boots_need != nil) && (@child.rain_boots_need > 0)
-      need_list << ["Rain Boots:", @child.rain_boot_need]
+      need_list << ["Rain Boots:", @child.rain_boots_need]
     end
     if (@child.sandals_need != nil) && (@child.sandals_need > 0)
       need_list << ["Sandals:", @child.sandals_need]

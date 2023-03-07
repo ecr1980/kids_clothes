@@ -1,0 +1,8 @@
+    <%= turbo_stream.update @type_target do %>
+      <% @garments.each do |garment|%>
+      <%= garment.clothing_catagory_item %><br>
+      <%= garment.color %><br>
+      <%= garment.season %><br>
+      <%= garment.size %><br>
+      <% end %>
+    <% end %>
