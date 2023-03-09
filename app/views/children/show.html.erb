@@ -36,107 +36,136 @@
   <div class="child-tops" data-garment-target="tops" style="display: none" >
     <h4>Tops</h4>
     <br>
-    <% @child.garments.where(clothing_catagory: "Tops").each do |garment|%>
-      <div class="clothing-items">
+    <div class="clothing-items">
+      <% @child.garments.where(clothing_catagory: "Tops").each do |garment|%> 
         <div class="clothing-item">
-          <%= garment.clothing_catagory_item %><br>
-          <%= garment.color %><br>
-          <%= garment.season %><br>
-          <%= garment.size %><br>
+          <% if garment.photo.attached? %>
+            <%= image_tag(garment.photo) %>
+          <% else %>
+            <%= garment.clothing_catagory_item %><br>
+            <%= garment.color %><br>
+            <%= garment.season %><br>
+            <%= garment.size %><br>
+          <% end %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
     <br>
   </div>
   <div class="child-bottoms" data-garment-target="bottoms" style="display: none">
     <h4>Bottoms</h4>
     <br>
-    <% @child.garments.where(clothing_catagory: "Bottoms").each do |garment|%>
-      <div class="clothing-items">
+    <div class="clothing-items">
+      <% @child.garments.where(clothing_catagory: "Bottoms").each do |garment|%> 
         <div class="clothing-item">
-          <%= garment.clothing_catagory_item %><br>
-          <%= garment.color %><br>
-          <%= garment.season %><br>
-          <%= garment.size %><br>
-          <br>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <div class="child-dresses" data-garment-target="dresses" style="display: none">
-    <h4>Dresses and Skirts</h4>
-    <br>
-    <% @child.garments.where(clothing_catagory: "Dresses and Skirts").each do |garment|%>
-      <div class="clothing-items">
-        <div class="clothing-item">
-          <%= garment.clothing_catagory_item %><br>
-          <%= garment.color %><br>
-          <%= garment.season %><br>
-          <%= garment.size %><br>
-          <br>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <div class="child-socks-and-underwear" data-garment-target="socks" style="display: none">
-    <h4>Socks and Underwear</h4>
-    <br>
-    <% @child.garments.where(clothing_catagory: "Socks and Underwear").each do |garment|%>
-        <div class="clothing-items">
-          <div class="clothing-item">
+          <% if garment.photo.attached? %>
+            <%= image_tag(garment.photo) %>
+          <% else %>
             <%= garment.clothing_catagory_item %><br>
             <%= garment.color %><br>
             <%= garment.season %><br>
             <%= garment.size %><br>
-            <br>
-          </div>
+          <% end %>
         </div>
-    <% end %>
+      <% end %>
+    </div>
+    <br>
+  </div>
+  <div class="child-dresses" data-garment-target="dresses" style="display: none">
+    <h4>Dresses and Skirts</h4>
+    <br>
+    <div class="clothing-items">
+      <% @child.garments.where(clothing_catagory: "Dresses and Skirts").each do |garment|%> 
+        <div class="clothing-item">
+          <% if garment.photo.attached? %>
+            <%= image_tag(garment.photo) %>
+          <% else %>
+            <%= garment.clothing_catagory_item %><br>
+            <%= garment.color %><br>
+            <%= garment.season %><br>
+            <%= garment.size %><br>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <br>
+  </div>
+  <div class="child-socks-and-underwear" data-garment-target="socks" style="display: none">
+    <h4>Socks and Underwear</h4>
+    <br>
+    <div class="clothing-items">
+      <% @child.garments.where(clothing_catagory: "Socks and Underwear").each do |garment|%> 
+        <div class="clothing-item">
+          <% if garment.photo.attached? %>
+            <%= image_tag(garment.photo) %>
+          <% else %>
+            <%= garment.clothing_catagory_item %><br>
+            <%= garment.color %><br>
+            <%= garment.season %><br>
+            <%= garment.size %><br>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <br>
   </div>
   <div class="child-pjs" data-garment-target="pjs" style="display: none">
     <h4>PJs</h4>
     <br>
-    <% @child.garments.where(clothing_catagory: "PJs").each do |garment|%>
-      <div class="clothing-items">
+    <br>
+    <div class="clothing-items">
+      <% @child.garments.where(clothing_catagory: "PJs").each do |garment|%> 
         <div class="clothing-item">
-          <%= garment.clothing_catagory_item %><br>
-          <%= garment.color %><br>
-          <%= garment.season %><br>
-          <%= garment.size %><br>
-          <br>
+          <% if garment.photo.attached? %>
+            <%= image_tag(garment.photo) %>
+          <% else %>
+            <%= garment.clothing_catagory_item %><br>
+            <%= garment.color %><br>
+            <%= garment.season %><br>
+            <%= garment.size %><br>
+          <% end %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <br>
   </div>
   <div class="child-outerwear" data-garment-target="outerwear" style="display: none">
     <h4>Outerwear</h4>
     <br>
-    <% @child.garments.where(clothing_catagory: "Outerwear").each do |garment|%>
-      <div class="clothing-items">
+    <div class="clothing-items">
+      <% @child.garments.where(clothing_catagory: "Outerwear").each do |garment|%> 
         <div class="clothing-item">
-          <%= garment.clothing_catagory_item %><br>
-          <%= garment.color %><br>
-          <%= garment.season %><br>
-          <%= garment.size %><br>
-          <br>
+          <% if garment.photo.attached? %>
+            <%= image_tag(garment.photo) %>
+          <% else %>
+            <%= garment.clothing_catagory_item %><br>
+            <%= garment.color %><br>
+            <%= garment.season %><br>
+            <%= garment.size %><br>
+          <% end %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <br>
   </div>
   <div class="child-shoes-and-boots" data-garment-target="shoes" style="display: none"> 
     <h4>Shoes and Boots</h4>
     <br>
-    <% @child.garments.where(clothing_catagory: "Shoes and Boots").each do |garment|%>
-      <div class="clothing-items">
+    <div class="clothing-items">
+      <% @child.garments.where(clothing_catagory: "Shoes and Boots").each do |garment|%> 
         <div class="clothing-item">
-          <%= garment.clothing_catagory_item %><br>
-          <%= garment.color %><br>
-          <%= garment.season %><br>
-          <%= garment.size %><br>
-          <br>
+          <% if garment.photo.attached? %>
+            <%= image_tag(garment.photo) %>
+          <% else %>
+            <%= garment.clothing_catagory_item %><br>
+            <%= garment.color %><br>
+            <%= garment.season %><br>
+            <%= garment.size %><br>
+          <% end %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <br>
   </div>
 </div>
 <br>

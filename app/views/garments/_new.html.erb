@@ -1,5 +1,9 @@
 <h1>NEW CLOTHES FORM</h1>
 <%= form_with model: @garment do |f| %>
+  <div>
+    <%= f.label :photo %>
+    <%= f.file_field :photo %>
+  </div>
   <div data-controller="catagory">
     <%= f.label :clothing_catagory, "Catagory:" %><br>
     <%= f.select :clothing_catagory, $clothing_catagory, {prompt: "Select a catagory"}, { class: 'form-select', data: { action: "change->catagory#change"} }%><br>

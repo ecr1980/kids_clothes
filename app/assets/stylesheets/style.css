@@ -35,10 +35,16 @@
   justify-content: center;
 }
 
+.clothing-items {
+  display: grid;
+  grid-template-columns: 300px 300px 300px 300px 300px 300px 300px 300px;
+  column-gap: 15px;
+}
 .clothing-item {
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
   border-style: solid;
   border-width: 2px;
   border-color: black
 }
+

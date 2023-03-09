@@ -17,6 +17,7 @@ class ChildrenController < ApplicationController
     end
     @garment = Garment.new
     @needs = need_determination()
+    @outgrown = outgrown_dermination()
   
   end
 
@@ -309,5 +310,8 @@ class ChildrenController < ApplicationController
       need_list << ["Flip flops:", @child.flip_flops_need]
     end
     return need_list
+  end
+
+  def outgrown_dermination()
   end
 end

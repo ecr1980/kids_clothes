@@ -7,6 +7,9 @@ class GarmentsController < ApplicationController
   def create
     @garment = Garment.new(garment_params)
     if @garment.save
+      if @garment.photo != nil
+        #@garment.photo.attach(params[:photo])
+      end
       redirect_to child_path(params[:garment][:child_id])
     end
   end
@@ -27,21 +30,21 @@ class GarmentsController < ApplicationController
       @options = $tops
     elsif params[:catagory] == "Bottoms"
       @options = $bottoms
-    elsif params[:catagory] == "Dresses and Skirts"
+    elsif params[:catagory] == "Dresses"
       @options = $dresses_and_skirts
-    elsif params[:catagory] == "Socks and Underwear"
+    elsif params[:catagory] == "Socks"
       @options = $socks_and_underwear
     elsif params[:catagory] == "PJs"
       @options = $pjs
     elsif params[:catagory] == "Outerwear"
       @options = $outerwear
-    elsif params[:catagory] == "Boots and Shoes"
+    elsif params[:catagory] == "Shoes"
       @options = $shoes
     else
       @options = [""]
     end
 
-    if params[:catagory] == "Boots and Shoes"
+    if params[:catagory] == "Shoes"
       @size = $shoe_sizes
     else
       @size = $clothing_sizes
@@ -54,6 +57,6 @@ class GarmentsController < ApplicationController
   private
   
   def garment_params
-    params.require(:garment).permit(:clothing_catagory, :clothing_catagory_item, :color, :season, :on_market, :price, :size, :child_id, :market_id)
+    params.require(:garment).permit(:clothing_catagory, :clothing_catagory_item, :color, :season, :on_market, :price, :size, :child_id, :market_id, :photo)
   end
 end
